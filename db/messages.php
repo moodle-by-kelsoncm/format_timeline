@@ -24,17 +24,21 @@
 
 defined('MOODLE_INTERNAL') || die();
 
+$popupdefault = defined('MESSAGE_DEFAULT_ENABLED')
+    ? MESSAGE_DEFAULT_ENABLED
+    : MESSAGE_DEFAULT_LOGGEDIN + MESSAGE_DEFAULT_LOGGEDOFF;
+
 $messageproviders = [
     'timelineposts' => [
         'defaults' => [
-            'popup' => MESSAGE_PERMITTED + MESSAGE_DEFAULT_LOGGEDIN + MESSAGE_DEFAULT_LOGGEDOFF,
-            'email' => MESSAGE_PERMITTED
-        ]
+            'popup' => MESSAGE_PERMITTED + $popupdefault,
+            'email' => MESSAGE_PERMITTED,
+        ],
     ],
     'postmention' => [
         'defaults' => [
-            'popup' => MESSAGE_PERMITTED + MESSAGE_DEFAULT_LOGGEDIN + MESSAGE_DEFAULT_LOGGEDOFF,
-            'email' => MESSAGE_PERMITTED
-        ]
-    ]
+            'popup' => MESSAGE_PERMITTED + $popupdefault,
+            'email' => MESSAGE_PERMITTED,
+        ],
+    ],
 ];
