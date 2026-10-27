@@ -115,11 +115,15 @@ define(['jquery', 'core/ajax', 'format_timeline/sweetalert'], function($, Ajax, 
         var userfullname = userimg.attr('alt');
         var loadallcomments = discussdiv.find('.loadmore');
 
-        var comment = $("<div class='post fadeIn'><div class='userimg'>" + $('<div/>').append(userimg).html() + "</div>" +
-          "<div class='entry'><div class='entry-content'>" +
-          "<p class='name'>" + userfullname + "</p>" +
-          "<p class='text'>" + value + "</p>" +
-          "</div></div></div>");
+        var comment = $("<div class='post fadeIn'></div>");
+        comment.append($("<div class='userimg'></div>").append(userimg));
+        comment.append(
+            $("<div class='entry'></div>").append(
+                $("<div class='entry-content'></div>")
+                    .append($("<p class='name'></p>").text(userfullname))
+                    .append($("<p class='text'></p>").text(value))
+            )
+        );
 
         if (loadallcomments.length > 0  ) {
             comment.insertBefore(loadallcomments);
